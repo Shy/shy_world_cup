@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj4um0fdir7v3"]
+
+[ext_resource type="Script" path="res://PathFollow3D.gd" id="1_njnvv"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dtiwq"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_piqyb"]
+
+[sub_resource type="Curve3D" id="Curve3D_yatva"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -80, 1, 2.08165e-12, 0, 0, 0, 0, 0, 0, 80, 1, 2.08165e-12),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="Track" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_dtiwq")
+
+[node name="Floor" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_piqyb")
+skeleton = NodePath("../..")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_yatva")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -80, 1, 2.08165e-12)
+loop = false
+script = ExtResource("1_njnvv")
