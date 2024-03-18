@@ -29,6 +29,6 @@ text = "Reset
 "
 
 [node name="Racer" parent="." instance=ExtResource("3_iu4k7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83589, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07727, 1.10043, 4.83602)
 
 [connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
