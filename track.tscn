@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bux1ueaawoq2x"]
+[gd_scene load_steps=5 format=3 uid="uid://bux1ueaawoq2x"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1b7nh"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
@@ -8,6 +8,13 @@ vertices = PackedVector3Array(-9.5, 0.5, -9.5, -9.5, 0.5, 9.5, 9.5, 0.5, 9.5, 9.
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6lkdw"]
+
+[sub_resource type="Curve3D" id="Curve3D_va62t"]
+_data = {
+"points": PackedVector3Array(-7.2741, -1.93145, -2.4669, 4, 0, 0, 0, 0, 8, 0, 0, 4, 0, 0, -4, 8, 0, 0, 4, 0, 0, -4, 0, 0, 0, 0, -8, 0, 0, -4, 0, 0, 0, -8, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
 
 [node name="Track" type="Node3D"]
 
@@ -24,3 +31,6 @@ navigation_mesh = SubResource("NavigationMesh_rerdf")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/NavigationRegion3D"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("PlaneMesh_6lkdw")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_va62t")
