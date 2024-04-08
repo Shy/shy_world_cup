@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dtoo5s6sn75cx"]
+
+[resource]
+resource_name = "red"
+cull_mode = 2
+albedo_color = Color(0.909804, 0.333333, 0.32549, 1)
+metallic = 0.5
+roughness = 0.0960784

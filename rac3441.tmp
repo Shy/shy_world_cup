@@ -20,10 +20,9 @@ signal has_arrived()
 func _ready():
 	## These values need to be adjusted for the actor's speed
 	## and the navigation layout.
-	var material = $raceCarRed/body.get_active_material(1).duplicate()
-	material.albedo_color = Color(randf(), randf(), randf())
-	$raceCarRed/body.set_material_override(material)
-
+	var material = StandardMaterial3D.new()
+	material.albedo_color =  Color(randf(),randf(),randf())
+	$racerCarRed/body.set_material_override.albedo_color(Color(randf(),randf(),randf())
 	navigation_agent.path_desired_distance = 2
 	navigation_agent.target_desired_distance =2
 	## Make sure to not await during _ready.

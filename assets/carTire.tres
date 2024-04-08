@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dqdr1t5uxkdce"]
+
+[resource]
+resource_name = "carTire"
+cull_mode = 2
+albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
+metallic = 0.5
+roughness = 0.0960784

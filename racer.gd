@@ -3,6 +3,7 @@ extends CharacterBody3D
 var movement_speed: float = 2.0
 var point_idx = 0
 var stopped = false
+var drag_factor = 0.05
 
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
@@ -33,11 +34,19 @@ func _physics_process(_delta):
 		if !stopped:
 			stopped = true
 			has_arrived.emit(self)
-		return
+		return	
 	var current_agent_position: Vector3 = global_position
 	var next_location: Vector3 = navigation_agent.get_next_path_position()
-	velocity = (next_location - current_agent_position).normalized() * movement_speed
-	navigation_agent.set_velocity(velocity)
+	var direction = global_position.direction_to(next_location)
+	var desired_velocity = direction * movement_speed
+	var steering_vector = desired_velocity - navigation_agent.velocity
+	#rotate(Vector3(0,1,0), navigation_agent.velocity.angle_to(direction))
+	#velocity = (next_location - current_agent_position).normalized() * movement_speed
+	if navigation_agent.velocity != Vector3.ZERO:
+		var lookdir = atan2(-navigation_agent.velocity.x, -navigation_agent.velocity.z)
+		rotation.y = lerp(rotation.y, lookdir, 0.1)
+	navigation_agent.velocity += steering_vector * drag_factor
+
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	velocity = velocity.move_toward((safe_velocity),.25)

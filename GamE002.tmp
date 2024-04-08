@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://3el0n4ukbap"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_2xcfu"]
+[ext_resource type="PackedScene" uid="uid://bux1ueaawoq2x" path="res://track.tscn" id="1_tkqry"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_2xcfu")
+
+[node name="Track" parent="." instance=ExtResource("1_tkqry")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.711217, -0.44186, 0.546745, 0.0252023, 0.793288, 0.608324, -0.702521, -0.418871, 0.575336, 11.3769, 8.59176, 10.8431)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999942, 0, 0.0107336, -0.0107336, -4.37114e-08, 0.999942, 4.69179e-10, -1, -4.37089e-08, 0, 9.49803, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 61.0
+offset_bottom = 41.0
+action_mode = 0
+text = "Reset
+"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
